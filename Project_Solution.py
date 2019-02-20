@@ -8,7 +8,10 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
-""" THIS SCRIPT GETS INPUTS FROM THE USER."""
+months = ['january', 'february', 'march', 'april', 'may', 'june','all']
+
+weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','All']
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -27,7 +30,9 @@ def get_filters():
             city = input1.lower()
             print("\nYou chose {}.".format(city.title()))
             break
-    months = ['january','february','march','april','may','june','all']
+
+    # TO DO: get user input for month (all, january, february, ... , june)
+
     while True:
         input2 = input("\nYou can select a specific month of data or request all the data. If you want to view a specific month, enter the month using its full name (January through June). Otherwise, choose 'All': ")
         if input2.lower() not in months:
@@ -36,15 +41,17 @@ def get_filters():
             month = input2.lower()
             print("\nYou chose {}.".format(month.title()))
             break
-    weekday = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','All']
+
+    # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
         input3 = input("\nYou can select a specific weekday of data or request all the days in a week. If you want to view a specific weekday, enter the weekday using its full name (Sunday through Saturday). Otherwise, choose 'All'.: ")
-        if input3.title() not in weekday:
+        if input3.title() not in weekdays:
             print("\nPlease select an appropriate day of the week, using its full name or 'All'.")
         else:
             day = input3.title()
             print("\nYou chose {}.".format(day))
             break
+
     print('-'*40)
     return city, month, day
 
@@ -75,7 +82,7 @@ def load_data(city, month, day):
     # filter by month if applicable
 
     if month != 'all':
-        months = ['january', 'february', 'march', 'april', 'may', 'june']
+
         ref_month = months.index(month)+1
         df = df[df['Month'] == ref_month]
 
@@ -90,8 +97,6 @@ def time_stats(df):
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
-    months = ['january', 'february', 'march', 'april', 'may', 'june']
-    weekdays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
 
     if df['Month'].std() !=0:
         print("\nThe most frequent month for travel is {}.".format(months[(df['Month'].mode()[0])-1].title()))
