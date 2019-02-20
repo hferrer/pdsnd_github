@@ -22,10 +22,11 @@ The data files for New York City and Chicago also included user data on gender a
 
 
 ### Files used
-bikeshare.py (as a template),
-chicago.csv (as data),
-new_york_city.csv (as data),
-washington.csv (as data)
+bikeshare.py (as the initial template) <br>
+chicago.csv (as data) <br>
+new_york_city.csv (as data) <br>
+washington.csv (as data) <br>
+Project_Solution.py (as final project script) <br>
 
 ### Credits
 #https://stackoverflow.com/questions/11285613/selecting-multiple-columns-in-a-pandas-dataframe
