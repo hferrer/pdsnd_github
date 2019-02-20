@@ -10,6 +10,8 @@ CITY_DATA = { 'chicago': 'chicago.csv',
 
 months = ['january', 'february', 'march', 'april', 'may', 'june','all']
 
+weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','All']
+
 def get_filters():
     """
     Asks user to specify a city, month, and day to analyze.
@@ -42,7 +44,6 @@ def get_filters():
             break
 
     # TO DO: get user input for day of week (all, monday, tuesday, ... sunday)
-    weekdays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','All']
     while True:
         input3 = input("\nYou can select a specific weekday of data or request all the days in a week. If you want to view a specific weekday, enter the weekday using its full name (Sunday through Saturday). Otherwise, choose 'All'.: ")
         if input3.title() not in weekdays:
@@ -97,8 +98,6 @@ def time_stats(df):
 
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
-
-    weekdays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
 
     if df['Month'].std() !=0:
         print("\nThe most frequent month for travel is {}.".format(months[(df['Month'].mode()[0])-1].title()))
